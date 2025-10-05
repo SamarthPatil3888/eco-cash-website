@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoCash | Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Global Styles */
+        :root {
+            --primary: #2ecc71;
+            --primary-dark: #27ae60;
+            --secondary: #3498db;
+            --accent: #f39c12;
+            --dark: #2c3e50;
+            --light: #ecf0f1;
+            --gray: #95a5a6;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        h1, h2, h3, h4 {
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+        
+        p {
+            margin-bottom: 15px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #2980b9;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary);
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            width: 40px;
+            height: 40px;
+            margin-right: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: var(--primary);
+        }
+
+        .logo-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        .logo-text span {
+            color: var(--secondary);
+        }
+        
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(46, 204, 113, 0.9), rgba(52, 152, 219, 0.9)), url('https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 180px 0 100px;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        /* Login Section */
+        .login-section {
+            background-color: white;
+            padding: 60px 0;
+        }
+        
+        .login-container {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .login-tabs {
+            display: flex;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .login-tab {
+            flex: 1;
+            text-align: center;
+            padding: 15px;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--gray);
+            transition: all 0.3s ease;
+        }
+        
+        .login-tab.active {
+            color: var(--primary);
+            border-bottom: 3px solid var(--primary);
+        }
+        
+        .login-form {
+            display: none;
+        }
+        
+        .login-form.active {
+            display: block;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .user-dashboard {
+            display: none;
+            text-align: center;
+            padding: 40px 0;
+        }
+        
+        .user-info {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+        
+        .user-points {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 20px 0;
+        }
+        
+        /* Features Section */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .logo-text {
+                font-size: 1.5rem;
+            }
+
+            .logo-img {
+                width: 35px;
+                height: 35px;
+            }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 10px 0;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo-container">
+    <div class="logo-img">
+        <img src="https://i.pinimg.com/736x/33/9a/7d/339a7d85f6fab66b68fcf644ff81a0c4.jpg" alt="Eco-Cash Logo">
+    </div>
+    <div class="logo-text">Eco<span>Cash</span></div>
+</a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="catalog.html">E-Waste Catalog</a></li>
+                    <li><a href="scanner.html">ML Scanner</a></li>
+                    <li><a href="pickup.html">Schedule Pickup</a></li>
+                    <li><a href="rewards.html">Rewards</a></li>
+                    <li><a href="local-shops.html">Local Shops</a></li>
+                    <li><a href="#login" id="loginBtn">Login/Register</a></li>
+                    <li><a href="#" id="logoutBtn" style="display: none;">Logout</a></li>
+                </ul>
+                <div class="mobile-menu">☰</div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Turn Your E-Waste Into Rewards</h1>
+            <p>EcoCash makes recycling electronics easy, rewarding, and impactful. Earn points for your E-waste and redeem them for exciting rewards while helping the planet.</p>
+            <a href="catalog.html" class="btn">Start Recycling Now</a>
+            <a href="#login" class="btn btn-secondary">Create Account</a>
+        </div>
+    </section>
+
+    <!-- Login Section -->
+    <section id="login" class="login-section">
+        <div class="container">
+            <div class="login-container">
+                <div class="login-tabs">
+                    <div class="login-tab active" data-tab="login">Login</div>
+                    <div class="login-tab" data-tab="register">Register</div>
+                </div>
+                
+                <form id="loginForm" class="login-form active">
+                    <div class="form-group">
+                        <label for="loginEmail">Email</label>
+                        <input type="email" id="loginEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Password</label>
+                        <input type="password" id="loginPassword" required>
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%;">Login</button>
+                </form>
+                
+                <form id="registerForm" class="login-form">
+                    <div class="form-group">
+                        <label for="registerName">Full Name</label>
+                        <input type="text" id="registerName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerEmail">Email</label>
+                        <input type="email" id="registerEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerPassword">Password</label>
+                        <input type="password" id="registerPassword" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerAddress">Address</label>
+                        <input type="text" id="registerAddress" required>
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%;">Create Account</button>
+                </form>
+                
+                <div id="userDashboard" class="user-dashboard">
+                    <div class="user-info">
+                        <h2>Welcome, <span id="userName"></span>!</h2>
+                        <p>You're logged in and ready to start recycling.</p>
+                        <div class="user-points">
+                            <span id="userPoints">0</span> points
+                        </div>
+                        <p>Recycle e-waste to earn more points!</p>
+                    </div>
+                    <div class="cta-buttons">
+                        <a href="catalog.html" class="btn">Browse Catalog</a>
+                        <a href="scanner.html" class="btn btn-secondary">Use ML Scanner</a>
+                        <a href="pickup.html" class="btn">Schedule Pickup</a>
+                        <a href="rewards.html" class="btn btn-secondary">View Rewards</a>
+                        <a href="local-shops.html" class="btn">Find Local Shops</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>How Eco-Cash Works</h2>
+                <p>Our platform makes e-waste recycling simple and rewarding</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>E-Waste Catalog</h3>
+                    <p>Browse our extensive catalog of electronic items to identify what you can recycle and see how many points they're worth.</p>
+                    <a href="catalog.html" class="btn" style="margin-top: 15px;">View Catalog</a>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h3>AI Identification</h3>
+                    <p>Use our ML-powered scanner to instantly identify your e-waste items and get an accurate point estimate.</p>
+                    <a href="scanner.html" class="btn" style="margin-top: 15px;">Try Scanner</a>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <h3>Smart Scheduling</h3>
+                    <p>Schedule a convenient pickup time and we'll collect your e-waste right from your doorstep.</p>
+                    <a href="pickup.html" class="btn" style="margin-top: 15px;">Schedule Pickup</a>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏆</div>
+                    <h3>Gamified Rewards</h3>
+                    <p>Earn points based on the urban mining potential of your items and redeem them for exciting rewards.</p>
+                    <a href="rewards.html" class="btn" style="margin-top: 15px;">View Rewards</a>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛍️</div>
+                    <h3>Local Shop Partnerships</h3>
+                    <p>Redeem your points at partnered local shops and support sustainable businesses in your community.</p>
+                    <a href="local-shops.html" class="btn" style="margin-top: 15px;">Find Shops</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Eco-Cash</h3>
+                    <p>Turning e-waste into rewards for a sustainable future.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="catalog.html">E-Waste Catalog</a></li>
+                        <li><a href="scanner.html">ML Scanner</a></li>
+                        <li><a href="pickup.html">Schedule Pickup</a></li>
+                        <li><a href="rewards.html">Rewards</a></li>
+                        <li><a href="local-shops.html">Rewards</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-envelope"></i> contact@eco-cash.com</li>
+                        <li><i class="fas fa-phone"></i> +1 (800) 123-4567</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Green Street, Eco City</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 EcoCash. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Check if user is logged in
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            const logoutBtn = document.getElementById('logoutBtn');
+            
+            if (currentUser) {
+                showUserDashboard(currentUser);
+                if (logoutBtn) logoutBtn.style.display = 'block';
+            }
+            
+            // Logout functionality
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    localStorage.removeItem('currentUser');
+                    window.location.href = 'index.html';
+                });
+            }
+            
+            // Mobile menu toggle
+            document.querySelector('.mobile-menu').addEventListener('click', function() {
+                document.querySelector('.nav-links').classList.toggle('active');
+            });
+            
+            // Login/Register tabs
+            const loginTabs = document.querySelectorAll('.login-tab');
+            const loginForms = document.querySelectorAll('.login-form');
+            
+            loginTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const tabName = this.getAttribute('data-tab');
+                    
+                    // Update active tab
+                    loginTabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Show corresponding form
+                    loginForms.forEach(form => {
+                        form.classList.remove('active');
+                        if (form.id === `${tabName}Form`) {
+                            form.classList.add('active');
+                        }
+                    });
+                });
+            });
+            
+            // Login form submission
+            document.getElementById('loginForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const email = document.getElementById('loginEmail').value;
+                const password = document.getElementById('loginPassword').value;
+                
+                // In a real app, this would be an API call
+                const users = JSON.parse(localStorage.getItem('users')) || [];
+                const user = users.find(u => u.email === email && u.password === password);
+                
+                if (user) {
+                    localStorage.setItem('currentUser', JSON.stringify(user));
+                    showUserDashboard(user);
+                } else {
+                    alert('Invalid email or password. Please try again.');
+                }
+            });
+            
+            // Register form submission
+            document.getElementById('registerForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const name = document.getElementById('registerName').value;
+                const email = document.getElementById('registerEmail').value;
+                const password = document.getElementById('registerPassword').value;
+                const address = document.getElementById('registerAddress').value;
+                
+                // In a real app, this would be an API call
+                const users = JSON.parse(localStorage.getItem('users')) || [];
+                
+                // Check if user already exists
+                if (users.find(u => u.email === email)) {
+                    alert('An account with this email already exists.');
+                    return;
+                }
+                
+                // Create new user
+                const newUser = {
+                    id: Date.now(),
+                    name,
+                    email,
+                    password,
+                    address,
+                    points: 0
+                };
+                
+                users.push(newUser);
+                localStorage.setItem('users', JSON.stringify(users));
+                localStorage.setItem('currentUser', JSON.stringify(newUser));
+                
+                showUserDashboard(newUser);
+            });
+            
+            function showUserDashboard(user) {
+                document.getElementById('loginForm').style.display = 'none';
+                document.getElementById('registerForm').style.display = 'none';
+                document.querySelector('.login-tabs').style.display = 'none';
+                
+                document.getElementById('userDashboard').style.display = 'block';
+                document.getElementById('userName').textContent = user.name;
+                document.getElementById('userPoints').textContent = user.points;
+                
+                // Update logout button visibility
+                const logoutBtn = document.getElementById('logoutBtn');
+                if (logoutBtn) logoutBtn.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
